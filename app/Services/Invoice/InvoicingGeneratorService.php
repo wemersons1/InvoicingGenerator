@@ -18,7 +18,7 @@ class InvoicingGeneratorService {
 
         return [
             "total" => (float) $data['valor_total'],
-            "valor_entrada" => (float) $data['valor_entrada'] ?? 0,
+            "valor_entrada" => isset($data['valor_entrada']) ? (float) $data['valor_entrada'] : 0,
             "parcelas" => $invoices
         ];
     }
