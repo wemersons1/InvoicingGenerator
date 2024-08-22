@@ -40,6 +40,13 @@ class InvoicingGeneratorService {
 
         $quantityInvoicesToGenerate = $this->getQuantityInvoicesToGenerate($data['qtd_parcelas'], $hasPaymentEntry);
 
+        $this->generateInvoices($data, $quantityInvoicesToGenerate);
+
+        return $this->invoices;
+    }
+
+    private function generateInvoices($data, $quantityInvoicesToGenerate)
+    {
         for ($i = 0; $i < $quantityInvoicesToGenerate; $i ++) {
             $numberInvoicing = count($this->invoices) + 1;
             $this->invoices[] = [
@@ -50,7 +57,7 @@ class InvoicingGeneratorService {
             ];
         }
 
-        return $this->invoices;
+        return;
     }
 
     private function getQuantityInvoicesToGenerate($quantityInstallments, $hasPaymentEntry)
